@@ -4,11 +4,18 @@ using System.Collections;
 public class CatMovement : MonoBehaviour {
 
     bool moveLeftRight;
+    bool moveJump;
+    bool moveJumping;
+
     float moveSpeedRight;
     float moveSpeedLeft;
 
 	// Use this for initialization
 	void Start () {
+
+        moveLeftRight = false;
+        moveJump = false;
+        moveJumping = false;
 
         moveSpeedRight = 0.15f;
         moveSpeedLeft = 0.15f;
@@ -19,12 +26,30 @@ public class CatMovement : MonoBehaviour {
     void Update()
     {
         // when CAT hits BUILDING, can move left & right
-        if (GetComponent<Transform>().position.y <= 2.58f) {
+        if (moveJumping == false) {
             moveLeftRight = true;
+        }
+        else {
+            moveLeftRight = false;
+        }
+        // when CAT is on top of BUILDING, can jump
+        if (GetComponent<Transform>().position.y >= 2.57f &&
+            GetComponent<Transform>().position.y <= 2.65f) {
+            moveJump = true;
+        }
+        // CAT doesn't bounce when on top of BUILDING
+        if (GetComponent<Transform>().position.y > 2.5f)
+        {
+            GetComponent<BoxCollider2D>().sharedMaterial.bounciness = 0f;
+        }
+        // makes BUILDING BOX COLLIDER 2D =/= trigger
+        if (GetComponent<Transform>().position.y <= 2f) {
+            GameObject.Find("centerBuilding").GetComponent<ignoreCollider>().buildingCollider = true;
+            GetComponent<BoxCollider2D>().sharedMaterial.bounciness = 0.5f;
         }
         // when CAT hits right wall, can't move right
         if (GetComponent<Transform>().position.x >= 7.19f) {
-            moveSpeedRight = 0;
+        moveSpeedRight = 0;
         }
         // when CAT isn't against right wall, can move right
         if (GetComponent<Transform>().position.x <= 7.19f)
@@ -57,6 +82,19 @@ public class CatMovement : MonoBehaviour {
                                                                  GetComponent<Transform>().position.z);
             }
         }
-
+        // CAT movement (jump)
+        if (moveJump == true) {
+            // when SPACEBAR pressed, CAT jumps off BUILDING
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 4f), ForceMode2D.Impulse);
+            }
+        }
+        // when SPACEBAR pressed, CAT cannot jump anymore & BUILDING BOX COLLIDER 2D = trigger
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            moveJump = false;
+            moveJumping = true;
+            GameObject.Find("centerBuilding").GetComponent<ignoreCollider>().buildingCollider = false;
+        }
     }
 }
