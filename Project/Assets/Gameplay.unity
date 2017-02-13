@@ -208,7 +208,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000014009624280, guid: ea0b56282a473734199e430c83ee05bb, type: 2}
       propertyPath: m_TagString
-      value: dedCat
+      value: totsNotDedCat
       objectReference: {fileID: 0}
     - target: {fileID: 1000014009624280, guid: ea0b56282a473734199e430c83ee05bb, type: 2}
       propertyPath: m_Layer
@@ -717,9 +717,10 @@ GameObject:
   - 61: {fileID: 1870461827}
   - 50: {fileID: 1870461826}
   - 114: {fileID: 1870461830}
-  m_Layer: 11
+  - 114: {fileID: 1870461831}
+  m_Layer: 12
   m_Name: Man
-  m_TagString: Untagged
+  m_TagString: RunningMan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -812,3 +813,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe23746c027b93642a787bb3851b230c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cat: {fileID: 1000014009624280, guid: ea0b56282a473734199e430c83ee05bb, type: 2}
+--- !u!114 &1870461831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870461825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99e456c60ad4dfb469606f805aabaae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cat: {fileID: 1000014009624280, guid: ea0b56282a473734199e430c83ee05bb, type: 2}

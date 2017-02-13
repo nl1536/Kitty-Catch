@@ -23,6 +23,8 @@ public class CatMovement : MonoBehaviour {
         moveSpeedLeft = 0.15f;
 
         catDed = false;
+
+        gameObject.GetComponent<Renderer>().enabled = true;
     }
 
     // Update is called once per frame
@@ -112,10 +114,17 @@ public class CatMovement : MonoBehaviour {
                 Instantiate(Cat, new Vector3(0.05f, 3.09f, 0f), Quaternion.identity);
                 catDed = true;
             }
+            // if CAT hits MAN then NEW CAT appears
+            if (catCollide.gameObject.tag == "RunningMan") {
+                catDed = true;
+                Instantiate(Cat, new Vector3(0.05f, 3.09f, 0f), Quaternion.identity);
+            }
         }
         if (catDed == true) {
-            // DEAD CATS don't collide with ALIVE CAT
-            Physics2D.IgnoreLayerCollision(10,11);
+            // DEAD CATS don't collide with ALIVE CAT or other DEAD CATS or MAN
+            Physics2D.IgnoreLayerCollision(10, 10);
+            Physics2D.IgnoreLayerCollision(10, 11);
+            Physics2D.IgnoreLayerCollision(10, 12);
         }
     }
 }

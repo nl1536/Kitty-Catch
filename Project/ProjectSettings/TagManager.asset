@@ -6,6 +6,8 @@ TagManager:
   tags:
   - dedCat
   - Building
+  - totsNotDedCat
+  - RunningMan
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Background
   - DedCats
   - notDedCats
-  - 
+  - RunningMan
   - 
   - 
   - 
