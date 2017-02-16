@@ -86,6 +86,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cat: {fileID: 1000014009624280}
+  moveLeftRight: 0
+  moveJump: 0
+  moveJumping: 0
+  bounceLeft: 0
+  bounceRight: 0
+  moveSpeedRight: 0
+  moveSpeedLeft: 0
+  catDed: 0
 --- !u!212 &212000012206659560
 SpriteRenderer:
   m_ObjectHideFlags: 1

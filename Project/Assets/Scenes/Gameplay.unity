@@ -167,6 +167,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!1 &109535344 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014009624280, guid: ea0b56282a473734199e430c83ee05bb,
+    type: 2}
+  m_PrefabInternal: {fileID: 135905789}
+--- !u!114 &109535350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 109535344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3db05e6c69192f74e9e246063f3a97b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &135905789
 Prefab:
   m_ObjectHideFlags: 0
@@ -385,6 +401,7 @@ GameObject:
   - 212: {fileID: 1105767063}
   - 61: {fileID: 1105767062}
   - 114: {fileID: 1105767065}
+  - 114: {fileID: 1105767066}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -401,7 +418,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
@@ -461,6 +478,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f800aeabc829d57489ec5a30966d844c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1105767066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1105767061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ba11bceafecd04e89297e939251491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1191565317
