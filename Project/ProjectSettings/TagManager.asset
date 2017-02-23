@@ -8,6 +8,10 @@ TagManager:
   - Building
   - totsNotDedCat
   - RunningMan
+  - chopper
+  - screenTrigger
+  - screenCollider
+  - screenColliderNot
   layers:
   - Default
   - TransparentFX
@@ -22,11 +26,11 @@ TagManager:
   - DedCats
   - notDedCats
   - RunningMan
-  - 
-  - 
-  - 
-  - 
-  - 
+  - startScreen
+  - winScreen
+  - loseScreen
+  - screenCollider
+  - screenTrigger
   - 
   - 
   - 
