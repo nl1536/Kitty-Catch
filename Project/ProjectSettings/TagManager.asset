@@ -9,9 +9,8 @@ TagManager:
   - totsNotDedCat
   - RunningMan
   - chopper
-  - screenTrigger
-  - screenCollider
-  - screenColliderNot
+  - centerBuilding
+  - Dog
   layers:
   - Default
   - TransparentFX
@@ -30,8 +29,8 @@ TagManager:
   - infoScreen
   - creditScreen
   - startButton
-  - 
-  - 
+  - centerBuilding
+  - helicopter
   - 
   - 
   - 

@@ -27,7 +27,12 @@ public class catDie : MonoBehaviour {
                 Instantiate(GetComponent<CatMovement>().Cat, new Vector3(0.05f, 3.09f, 0f), Quaternion.identity);
             }
             // if CAT hits HELICOPTER then it dies and NEW CAT appears
-            if (catCollide.gameObject.tag == "Helicopter") {
+            if (catCollide.gameObject.tag == "chopper") {
+                GetComponent<CatMovement>().catDed = true;
+                Instantiate(GetComponent<CatMovement>().Cat, new Vector3(0.05f, 3.09f, 0f), Quaternion.identity);
+            }
+            // if CAT hits DOG then it dies and NEW CAT appears
+            if (catCollide.gameObject.tag == "Dog") {
                 GetComponent<CatMovement>().catDed = true;
                 Instantiate(GetComponent<CatMovement>().Cat, new Vector3(0.05f, 3.09f, 0f), Quaternion.identity);
             }

@@ -15,7 +15,7 @@ public class ManCatchCat : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        
         if (catsCaught == 10) {
             GameObject.Find("Window").GetComponent<gameState>().gamePlay = false;
             GameObject.Find("Window").GetComponent<gameState>().gameWin = true;
@@ -24,11 +24,12 @@ public class ManCatchCat : MonoBehaviour {
 	}
 
     // when CAT hits MAN, CAT disappears
-    void OnCollisionEnter2D(Collision2D catchCat)
-    {
-        if (catchCat.gameObject.tag == "totsNotDedCat") {
-            catchCat.gameObject.GetComponent<Renderer>().enabled = false;
-            catsCaught++;
+    void OnCollisionEnter2D(Collision2D catchCat) {
+        if (GameObject.Find("Window").GetComponent<gameState>().gamePlay == true) {
+            if (catchCat.gameObject.tag == "totsNotDedCat"){
+                catchCat.gameObject.GetComponent<Renderer>().enabled = false;
+                catsCaught++;
+            }
         }
     }
 }
