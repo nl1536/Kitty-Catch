@@ -14,11 +14,18 @@ public class ignoreCollider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (buildingCollider == true) {
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        if (GameObject.Find("Window").GetComponent<gameState>().gamePlay == true) {
+            if (buildingCollider == true) {
+                gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            }
+            else {
+                gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            }
         }
-        else {
-            gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+
+        if (GameObject.Find("Window").GetComponent<gameState>().gameWin == true ||
+            GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
+            gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         }
     }
 }

@@ -16,6 +16,11 @@ public class ManCatchCat : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (catsCaught == 10) {
+            GameObject.Find("Window").GetComponent<gameState>().gamePlay = false;
+            GameObject.Find("Window").GetComponent<gameState>().gameWin = true;
+        }
+
 	}
 
     // when CAT hits MAN, CAT disappears

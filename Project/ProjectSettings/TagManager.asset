@@ -26,11 +26,11 @@ TagManager:
   - DedCats
   - notDedCats
   - RunningMan
-  - startScreen
-  - winScreen
-  - loseScreen
-  - screenCollider
-  - screenTrigger
+  - startWinScreen
+  - infoScreen
+  - creditScreen
+  - startButton
+  - 
   - 
   - 
   - 

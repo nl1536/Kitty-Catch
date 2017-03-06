@@ -22,10 +22,12 @@ public class ManAutoRun : MonoBehaviour {
     void Update() {
         if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             GetComponent<Renderer>().enabled = false;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
         }
 
         if (GameObject.Find("Window").GetComponent<gameState>().gamePlay == true) {
             GetComponent<Renderer>().enabled = true;
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 
             // the more CATS the MAN gets, the faster the MAN runs
             if (GetComponent<ManCatchCat>().catsCaught == 0) {
