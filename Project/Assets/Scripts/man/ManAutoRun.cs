@@ -5,7 +5,7 @@ public class ManAutoRun : MonoBehaviour {
 
     public GameObject Cat;
 
-    bool moveLeftRight;
+    public bool moveLeftRight;
     bool moveLeft;
     bool moveRight;
 
@@ -61,31 +61,28 @@ public class ManAutoRun : MonoBehaviour {
                 moveSpeed = 0.23f;
             }
 
-            // when MAN hits GROUND, he starts moving left.
-            if (GetComponent<Transform>().position.y <= -3.650688) {
-                moveLeftRight = true;
-            }
-
             if (moveLeftRight == true) {
                 // when MAN hits right side of screen, he starts moving left.
-                if (GetComponent<Transform>().position.x >= 8.81) {
+                if (GetComponent<Transform>().position.x >= 8.85f) {
                     moveRight = false;
                     moveLeft = true;
                 }
                 // when MAN hits left side of screen, he starts moving right.
-                if (GetComponent<Transform>().position.x <= -8.82) {
+                if (GetComponent<Transform>().position.x <= -8.85f) {
                     moveLeft = false;
                     moveRight = true;
                 }
 
                 // MAN move left
                 if (moveLeft == true) {
+                    GetComponent<SpriteRenderer>().flipX = false;
                     GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x - moveSpeed,
                                                                      GetComponent<Transform>().position.y,
                                                                      GetComponent<Transform>().position.z);
                 }
                 // MAN move right
                 if (moveRight == true) {
+                    GetComponent<SpriteRenderer>().flipX = true;
                     GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + moveSpeed,
                                                                      GetComponent<Transform>().position.y,
                                                                      GetComponent<Transform>().position.z);
@@ -96,5 +93,20 @@ public class ManAutoRun : MonoBehaviour {
         if (GameObject.Find("Window").GetComponent<gameState>().gameWin == true) {
             moveLeftRight = false;
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D run) {
+        // when MAN hits GROUND, he starts moving left.
+        if (run.gameObject.tag == "Ground") { 
+            moveLeftRight = true;
+        }
+    }
+
+    void catchFreeze() {
+        moveLeftRight = false;
+    }
+
+    void catchUnfreeze() {
+        moveLeftRight = true;
     }
 }

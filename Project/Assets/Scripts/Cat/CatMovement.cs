@@ -5,7 +5,8 @@ public class CatMovement : MonoBehaviour {
 
     public GameObject Cat;
 
-    public bool moveLeftRight;
+    public bool moveLeft;
+    public bool moveRight;
     public bool moveJump;
     public bool moveJumping;
 
@@ -24,11 +25,17 @@ public class CatMovement : MonoBehaviour {
 	void Start () {
         
         moveJumping = false;
+        moveLeft = true;
+        moveRight = true;
 
         moveSpeedRight = 0.15f;
         moveSpeedLeft = 0.15f;
 
         catDed = false;
+
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        GetComponent<Animator>().SetBool("Fall", false);
 
         gameObject.GetComponent<Renderer>().enabled = true;
     }
@@ -43,7 +50,7 @@ public class CatMovement : MonoBehaviour {
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
 
             if (catDed == false) {
-                gameObject.layer = 11;
+                gameObject.layer = 11; // "notDedCats"
 
                 if (moveJumpingRight == true) {
                     moveJumpingLeft = false;
@@ -54,14 +61,16 @@ public class CatMovement : MonoBehaviour {
 
                 // when CAT hits BUILDING, can move left & right & jump & bounces minimally
                 if (moveJumping == false) {
-                    moveLeftRight = true;
                     moveJump = true;
                     GameObject.Find("centerBuilding").GetComponent<ignoreCollider>().buildingCollider = true;
                 }
                 else { // when CAT is jumping, can't move left & right & jump & bounces a lot
-                    moveLeftRight = false;
+                    GetComponent<Animator>().SetBool("Jumping", true);
+                    moveLeft = false;
+                    moveRight = false;
                     moveJump = false;
                     GameObject.Find("centerBuilding").GetComponent<ignoreCollider>().buildingCollider = false;
+                    Physics2D.IgnoreLayerCollision(11, 14); // "sideBuilding"
 
                     // when LEFT ARROW pressed, CAT moves left
                     if (moveJumpingLeft == true && Input.GetKey(KeyCode.LeftArrow)) {
@@ -89,57 +98,87 @@ public class CatMovement : MonoBehaviour {
                 // when SPACEBAR pressed, CAT jumps
                 if (moveJump == true) {
                     if (Input.GetKeyDown(KeyCode.Space)) {
+                        GetComponent<Animator>().SetTrigger("Jump");
                         moveJumping = true;
                         gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 4f), ForceMode2D.Impulse);
                     }
                     if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.RightArrow)) { // if RIGHT ARROW was pressed, jump will go slightly right
+                        GetComponent<Animator>().SetTrigger("Jump");
                         gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(150f, 0f), ForceMode2D.Force);
                         moveJumpingRight = true;
                         bounceRight = true;
                     }
                     if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.LeftArrow)) { // if LEFT ARROW was pressed, jump will go slightly left
+                        GetComponent<Animator>().SetTrigger("Jump");
                         gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-150f, 0f), ForceMode2D.Force);
                         moveJumpingLeft = true;
                         bounceLeft = true;
                     }
                 }
-                // when CAT hits right wall, can't move right
-                if (GetComponent<Transform>().position.x >= 7.19f) {
-                    moveSpeedRight = 0;
-                }
-                // when CAT isn't against right wall, can move right
-                if (GetComponent<Transform>().position.x <= 7.19f) {
-                    moveSpeedRight = 0.15f;
-                }
-                // when CAT hits left wall, can't move left
-                if (GetComponent<Transform>().position.x <= -7.12) {
-                    moveSpeedLeft = 0;
-                }
-                // when CAT isn't against left wall, can move left
-                if (GetComponent<Transform>().position.x >= -7.12) {
-                    moveSpeedLeft = 0.15f;
-                }
                 // CAT movement (left & right)
-                if (moveLeftRight == true) {
+                if (moveLeft == true) {
                     // when LEFT ARROW pressed, CAT moves left
                     if (Input.GetKey(KeyCode.LeftArrow)) {
                         GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x - moveSpeedLeft,
                                                                          GetComponent<Transform>().position.y,
                                                                          GetComponent<Transform>().position.z);
+                        GetComponent<SpriteRenderer>().flipX = false;
+                        GetComponent<Animator>().SetBool("WalkLeft", true);
                     }
+                    else {
+                        GetComponent<Animator>().SetBool("WalkLeft", false);
+                    }
+                }
+                if (moveLeft == false) {
+                    GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+                    GetComponent<Animator>().SetBool("WalkLeft", false);
+                    if (Input.GetKey(KeyCode.RightArrow)) {
+                        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                        moveLeft = true;
+                    }
+                }
+                if (moveRight == true) {
                     // when RIGHT ARROW pressed, CAT moves right
                     if (Input.GetKey(KeyCode.RightArrow)) {
                         GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + moveSpeedRight,
                                                                          GetComponent<Transform>().position.y,
                                                                          GetComponent<Transform>().position.z);
+                        GetComponent<SpriteRenderer>().flipX = true;
+                        GetComponent<Animator>().SetBool("WalkRight", true);
+                    }
+                    else {
+                        GetComponent<Animator>().SetBool("WalkRight", false);
+                    }
+                }
+                if (moveRight == false) {
+                    GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
+                    GetComponent<Animator>().SetBool("WalkRight", false);
+                    if (Input.GetKey(KeyCode.LeftArrow)) {
+                        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
+                        moveRight = true;
                     }
                 }
             }
         }
 
             if (catDed == true) {
-                gameObject.layer = 10;
+                moveLeft = false;
+                moveRight = false;
+                gameObject.layer = 10; // "dedCats"
                 gameObject.tag = "dedCat";
             }
         }
+
+    void OnTriggerEnter2D(Collider2D restrictMovement) {
+        if (restrictMovement.gameObject.tag == "leftBuilding") {
+            moveLeft = false;
+            }
+        if (restrictMovement.gameObject.tag == "rightBuilding") {
+            moveRight = false;
+            }
+        }
+
+    void FallTrue() {
+        GetComponent<Animator>().SetBool("Fall", true);
     }
+}

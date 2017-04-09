@@ -27,9 +27,12 @@ public class ManCatchCat : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D catchCat) {
         if (GameObject.Find("Window").GetComponent<gameState>().gamePlay == true) {
             if (catchCat.gameObject.tag == "totsNotDedCat"){
-                catchCat.gameObject.GetComponent<Renderer>().enabled = false;
                 catsCaught++;
             }
         }
+    }
+    
+    void savedCatTrue() {
+        GameObject.FindWithTag("dedCat").GetComponent<Animator>().SetBool("Saved", true);
     }
 }

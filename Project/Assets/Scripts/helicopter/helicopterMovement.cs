@@ -3,8 +3,8 @@ using System.Collections;
 
 public class helicopterMovement : MonoBehaviour {
 
-    bool chopperGoRight;
-    bool chopperGoLeft;
+    public bool chopperGoRight;
+    public bool chopperGoLeft;
 
     float moveSpeed;
 
@@ -12,6 +12,7 @@ public class helicopterMovement : MonoBehaviour {
 	void Start () {
 
         gameObject.GetComponent<Renderer>().enabled = false;
+        GetComponent<Animator>().SetBool("Kill", false);
 
         chopperGoLeft = false;
         chopperGoRight = false;
@@ -56,6 +57,9 @@ public class helicopterMovement : MonoBehaviour {
 
             if (chopperGoRight == true) {
                 gameObject.GetComponent<Renderer>().enabled = true;
+                GetComponent<Transform>().localScale = new Vector3(-4.875203f,
+                                                                    GetComponent<Transform>().localScale.y,
+                                                                    GetComponent<Transform>().localScale.z);
                 GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + moveSpeed,
                                                                  GetComponent<Transform>().position.y,
                                                                  GetComponent<Transform>().position.z);
@@ -63,6 +67,9 @@ public class helicopterMovement : MonoBehaviour {
 
             if (chopperGoLeft == true) {
                 gameObject.GetComponent<Renderer>().enabled = true;
+                GetComponent<Transform>().localScale = new Vector3(4.875203f,
+                                                                   GetComponent<Transform>().localScale.y,
+                                                                   GetComponent<Transform>().localScale.z);
                 GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x - moveSpeed,
                                                                  GetComponent<Transform>().position.y,
                                                                  GetComponent<Transform>().position.z);

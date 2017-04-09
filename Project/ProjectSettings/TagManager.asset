@@ -5,12 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - dedCat
-  - Building
+  - leftBuilding
   - totsNotDedCat
   - RunningMan
   - chopper
   - centerBuilding
   - Dog
+  - rightBuilding
+  - Ground
+  - bodyPart
   layers:
   - Default
   - TransparentFX
@@ -20,15 +23,15 @@ TagManager:
   - UI
   - 
   - 
-  - Objects
+  - Dog
   - Background
   - DedCats
   - notDedCats
   - RunningMan
-  - startWinScreen
-  - infoScreen
-  - creditScreen
-  - startButton
+  - Window
+  - sideBuildingLeft
+  - sideBuildingRight
+  - Button
   - centerBuilding
   - helicopter
   - 
