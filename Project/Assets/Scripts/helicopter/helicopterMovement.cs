@@ -8,6 +8,8 @@ public class helicopterMovement : MonoBehaviour {
 
     float moveSpeed;
 
+    public AudioClip helicopter_kill_sfx;
+
 	// Use this for initialization
 	void Start () {
 
@@ -18,6 +20,10 @@ public class helicopterMovement : MonoBehaviour {
         chopperGoRight = false;
 
         moveSpeed = 0.05f;
+
+        GetComponent<AudioSource>().mute = true;
+        GetComponent<AudioSource>().volume = 0f;
+        GetComponent<AudioSource>().panStereo = -1f;
     }
 	
 	// Update is called once per frame
@@ -32,6 +38,7 @@ public class helicopterMovement : MonoBehaviour {
 
             // when the MAN catches three CATS, the HELICOPTER appears
             if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught >= 3) {
+                GetComponent<AudioSource>().mute = false;
                 if (GetComponent<Transform>().position.x <= -14f) {
                     chopperGoRight = true;
                     chopperGoLeft = false;
@@ -63,6 +70,13 @@ public class helicopterMovement : MonoBehaviour {
                 GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + moveSpeed,
                                                                  GetComponent<Transform>().position.y,
                                                                  GetComponent<Transform>().position.z);
+                GetComponent<AudioSource>().panStereo += .005f;
+                if (GetComponent<Transform>().position.x <= 0) {
+                    GetComponent<AudioSource>().volume += .01f;
+                }
+                if (GetComponent<Transform>().position.x > 6) {
+                    GetComponent<AudioSource>().volume -= .01f;
+                }
             }
 
             if (chopperGoLeft == true) {
@@ -73,12 +87,20 @@ public class helicopterMovement : MonoBehaviour {
                 GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x - moveSpeed,
                                                                  GetComponent<Transform>().position.y,
                                                                  GetComponent<Transform>().position.z);
+                GetComponent<AudioSource>().panStereo -= .005f;
+                if (GetComponent<Transform>().position.x >= 0){
+                    GetComponent<AudioSource>().volume += .01f;
+                }
+                if (GetComponent<Transform>().position.x < -6) {
+                    GetComponent<AudioSource>().volume -= .01f;
+                }
             }
         }
 
         if (GameObject.Find("Window").GetComponent<gameState>().gameWin == true) {
             GetComponent<Transform>().position = new Vector3(-14.02f, 0f, GetComponent<Transform>().position.z);
             GetComponent<Renderer>().enabled = false;
+            GetComponent<AudioSource>().mute = true;
         }
     }
 }

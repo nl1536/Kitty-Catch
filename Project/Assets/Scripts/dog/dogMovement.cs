@@ -10,12 +10,16 @@ public class dogMovement : MonoBehaviour {
     float jumpForce;
     public float runDistance;
 
+    public AudioClip dog_bark_sfx;
+    public AudioClip dog_growl_sfx;
+
 	// Use this for initialization
 	void Start () {
 
         GetComponent<Animator>().SetBool("hasKilled", false);
         moveLeftRight = true;
         runDistance = 5f;
+        GetComponent<AudioSource>().mute = false;
 
 	}
 
@@ -113,6 +117,13 @@ public class dogMovement : MonoBehaviour {
             GetComponent<Transform>().position = new Vector3(12.5f, -2.5f, GetComponent<Transform>().position.z);
             GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionY;
             GetComponent<Renderer>().enabled = false;
+            GetComponent<AudioSource>().mute = true;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D jump) {
+        if (jump.gameObject.name == "Ground") {
+            GetComponent<AudioSource>().PlayOneShot(dog_bark_sfx);
         }
     }
 
@@ -123,6 +134,8 @@ public class dogMovement : MonoBehaviour {
         GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x,
                                                            -5.945045f,
                                                            GetComponent<Transform>().position.z);
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().PlayOneShot(dog_growl_sfx);
     }
 
     void killUnfreeze()  {

@@ -21,6 +21,8 @@ public class CatMovement : MonoBehaviour {
 
     public bool catDed;
 
+    public AudioClip cat_meow_sfx;
+
 	// Use this for initialization
 	void Start () {
         
@@ -101,6 +103,7 @@ public class CatMovement : MonoBehaviour {
                         GetComponent<Animator>().SetTrigger("Jump");
                         moveJumping = true;
                         gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 4f), ForceMode2D.Impulse);
+                        GetComponent<AudioSource>().PlayOneShot(cat_meow_sfx);
                     }
                     if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.RightArrow)) { // if RIGHT ARROW was pressed, jump will go slightly right
                         GetComponent<Animator>().SetTrigger("Jump");

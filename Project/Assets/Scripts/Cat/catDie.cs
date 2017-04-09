@@ -5,6 +5,8 @@ public class catDie : MonoBehaviour {
 
     bool killedByDog;
 
+    public AudioClip cat_die_sfx;
+
 	// Use this for initialization
 	void Start () {
 
@@ -29,6 +31,7 @@ public class catDie : MonoBehaviour {
                 Instantiate(GameObject.Find("blood_splatter_ground"), new Vector3(GetComponent<Transform>().position.x,
                                                                                   GetComponent<Transform>().position.y,
                                                                                   GetComponent<Transform>().position.z), Quaternion.identity);
+                GetComponent<AudioSource>().PlayOneShot(cat_die_sfx);
                 GetComponent<CatMovement>().catDed = true;
             }
             // if CAT hits MAN then NEW CAT appears
@@ -41,6 +44,8 @@ public class catDie : MonoBehaviour {
             // if CAT hits HELICOPTER then it dies and NEW CAT appears
             if (catCollide.gameObject.tag == "chopper") {
                 GetComponent<SpriteRenderer>().enabled = false;
+                GameObject.Find("Helicopter").GetComponent<AudioSource>().PlayOneShot(
+                    GameObject.Find("Helicopter").GetComponent<helicopterMovement>().helicopter_kill_sfx);
                 GetComponent<CatMovement>().catDed = true;
                 Instantiate(GetComponent<CatMovement>().Cat, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
                 Instantiate(GameObject.Find("cat_die_head"), new Vector3(GameObject.Find("Helicopter").GetComponent<Transform>().position.x + Random.Range(-3f, 3f),

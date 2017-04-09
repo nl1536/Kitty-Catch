@@ -16,6 +16,8 @@ public class ManAutoRun : MonoBehaviour {
 
         moveLeftRight = false;
         moveSpeed = 0.05f;
+
+        GetComponent<Rigidbody2D>().isKinematic = false;
     }
 
     // Update is called once per frame
@@ -99,6 +101,7 @@ public class ManAutoRun : MonoBehaviour {
         // when MAN hits GROUND, he starts moving left.
         if (run.gameObject.tag == "Ground") { 
             moveLeftRight = true;
+            GetComponent<Rigidbody2D>().isKinematic = true;
         }
     }
 

@@ -7,6 +7,8 @@ public class ManCatchCat : MonoBehaviour {
 
     public float catsCaught;
 
+    public AudioClip cat_purr_sfx;
+
 	// Use this for initialization
 	void Start () {
 
@@ -28,6 +30,7 @@ public class ManCatchCat : MonoBehaviour {
         if (GameObject.Find("Window").GetComponent<gameState>().gamePlay == true) {
             if (catchCat.gameObject.tag == "totsNotDedCat"){
                 catsCaught++;
+                GetComponent<AudioSource>().PlayOneShot(cat_purr_sfx);
             }
         }
     }
