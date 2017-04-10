@@ -8,6 +8,11 @@ public class gameState : MonoBehaviour {
     public bool gamePlay;
     public bool gameWin;
 
+    public Sprite title_window;
+    public Sprite credit_window;
+    public Sprite info_window_controls;
+    public Sprite win_window;
+
 	// Use this for initialization
 	void Start () {
 
@@ -15,6 +20,8 @@ public class gameState : MonoBehaviour {
         gameStart = true;
         gamePlay = false;
         gameWin = false;
+
+        GetComponent<SpriteRenderer>().sprite = title_window;
 
 	}
 	
@@ -41,7 +48,7 @@ public class gameState : MonoBehaviour {
             GetComponent<TargetJoint2D>().maxForce = 800f;
             GetComponent<TargetJoint2D>().anchor = new Vector2(GetComponent<Transform>().position.x,
                                                                GetComponent<Transform>().position.y);
-            GetComponent<TargetJoint2D>().target = new Vector2(0f, 0f);
+            GetComponent<TargetJoint2D>().target = new Vector2(0f, 4.5f);
         }
         // WINDOW moves up out of view during GAMEPLAY
         if (gamePlay == true) {
@@ -54,7 +61,8 @@ public class gameState : MonoBehaviour {
             GetComponent<TargetJoint2D>().maxForce = 800f;
             GetComponent<TargetJoint2D>().anchor = new Vector2(GetComponent<Transform>().position.x,
                                                                GetComponent<Transform>().position.y);
-            GetComponent<TargetJoint2D>().target = new Vector2(0f, 0f);
+            GetComponent<TargetJoint2D>().target = new Vector2(0f, 4.5f);
+            GetComponent<SpriteRenderer>().sprite = win_window;
         }
     }
 }

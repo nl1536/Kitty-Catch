@@ -28,7 +28,7 @@ public class ManCatchCat : MonoBehaviour {
     // when CAT hits MAN, CAT disappears
     void OnCollisionEnter2D(Collision2D catchCat) {
         if (GameObject.Find("Window").GetComponent<gameState>().gamePlay == true) {
-            if (catchCat.gameObject.tag == "totsNotDedCat"){
+            if (catchCat.gameObject.tag == "totsNotDedCat") {
                 catsCaught++;
                 GetComponent<AudioSource>().PlayOneShot(cat_purr_sfx);
             }
