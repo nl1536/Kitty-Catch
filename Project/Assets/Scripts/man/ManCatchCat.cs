@@ -31,6 +31,9 @@ public class ManCatchCat : MonoBehaviour {
             if (catchCat.gameObject.tag == "totsNotDedCat") {
                 catsCaught++;
                 GetComponent<AudioSource>().PlayOneShot(cat_purr_sfx);
+                GameObject.Find("CatCounter").GetComponent<Transform>().position = new Vector3(GameObject.Find("CatCounter").GetComponent<Transform>().position.x,
+                                                                                               6.4f,
+                                                                                               GameObject.Find("CatCounter").GetComponent<Transform>().position.z);
             }
         }
     }

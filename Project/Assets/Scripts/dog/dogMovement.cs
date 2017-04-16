@@ -80,7 +80,7 @@ public class dogMovement : MonoBehaviour {
                 }
                 // the more CATS caught, the higher the DOG jumps
                 if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 6 &&
-                    GetComponent<Transform>().position.y + 2.5f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
+                    GetComponent<Transform>().position.y + 3f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
                     GetComponent<Transform>().position.y <= -3f) {
                     GetComponent<Animator>().SetBool("Jump", true);
                     jumpForce = .3f;
@@ -88,7 +88,7 @@ public class dogMovement : MonoBehaviour {
                     GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                 }
                 if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 7 &&
-                    GetComponent<Transform>().position.y + 3f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
+                    GetComponent<Transform>().position.y + 3.5f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
                     GetComponent<Transform>().position.y <= -3f) {
                     GetComponent<Animator>().SetBool("Jump", true);
                     jumpForce = .35f;
@@ -96,7 +96,7 @@ public class dogMovement : MonoBehaviour {
                     GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                 }
                 if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 8 &&
-                    GetComponent<Transform>().position.y + 3.5f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
+                    GetComponent<Transform>().position.y + 4f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
                     GetComponent<Transform>().position.y <= -3f) {
                     GetComponent<Animator>().SetBool("Jump", true);
                     jumpForce = .4f;
@@ -104,7 +104,7 @@ public class dogMovement : MonoBehaviour {
                     GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                 }
                 if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 9 &&
-                    GetComponent<Transform>().position.y + 4f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
+                    GetComponent<Transform>().position.y + 4.5f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
                     GetComponent<Transform>().position.y <= -3f) {
                     GetComponent<Animator>().SetBool("Jump", true);
                     jumpForce = .45f;

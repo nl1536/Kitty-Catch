@@ -11,6 +11,7 @@ public class catDie : MonoBehaviour {
 	void Start () {
 
         GetComponent<Animator>().SetBool("Dead", false);
+        GetComponent<Animator>().SetBool("DeadByDog", false);
         GetComponent<Animator>().SetBool("DieGroundBounce", false);
 
         killedByDog = false;
@@ -18,6 +19,10 @@ public class catDie : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (killedByDog == true) {
+            GetComponent<Animator>().SetBool("DeadByDog", true);
+        }
 	}
 
     void OnCollisionEnter2D(Collision2D catCollide) {
