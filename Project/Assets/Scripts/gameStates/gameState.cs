@@ -7,17 +7,22 @@ public class gameState : MonoBehaviour {
     public bool gameStart;
     public bool gamePlay;
     public bool gameWin;
+    public bool gameTutorial;
 
     public Sprite title_window;
     public Sprite credit_window;
+    public Sprite info_window_story;
     public Sprite info_window_controls;
+    public Sprite info_window_goal;
     public Sprite win_window;
+    public Sprite tutorial_window;
 
 	// Use this for initialization
 	void Start () {
 
         gameStartWin = true;
         gameStart = true;
+        gameTutorial = false;
         gamePlay = false;
         gameWin = false;
 
@@ -29,6 +34,11 @@ public class gameState : MonoBehaviour {
 	void Update () {
 
         if (gamePlay == true) {
+            gameStart = false;
+            gameTutorial = false;
+        }
+
+        if (gameTutorial == true) {
             gameStart = false;
         }
 

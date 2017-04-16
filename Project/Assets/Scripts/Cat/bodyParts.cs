@@ -22,6 +22,7 @@ public class bodyParts : MonoBehaviour {
         Physics2D.IgnoreLayerCollision(10, 16);
         Physics2D.IgnoreLayerCollision(10, 17);
         Physics2D.IgnoreLayerCollision(10, 18);
+        Physics2D.IgnoreLayerCollision(10, 19);
 
         // GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(.01f, .05f), 0f, Random.Range(0.01f, .05f)), ForceMode2D.Impulse);
 

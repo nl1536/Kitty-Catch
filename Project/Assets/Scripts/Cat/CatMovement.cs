@@ -130,7 +130,7 @@ public class CatMovement : MonoBehaviour {
                     }
                     else {
                         GetComponent<Animator>().SetBool("WalkLeft", false);
-                    }
+                        }
                 }
                 if (moveLeft == false) {
                     GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;

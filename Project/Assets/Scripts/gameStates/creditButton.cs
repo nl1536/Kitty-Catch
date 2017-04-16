@@ -28,6 +28,12 @@ public class creditButton : MonoBehaviour {
             GetComponent<TargetJoint2D>().target = new Vector2(2.65f, -6.3f);
         }
 
+        if (GameObject.Find("Window").GetComponent<gameState>().gameTutorial == true) {
+            GetComponent<TargetJoint2D>().maxForce = 200f;
+            GetComponent<TargetJoint2D>().anchor = new Vector2(0f, 0f);
+            GetComponent<TargetJoint2D>().target = new Vector2(2.65f, -10f);
+        }
+
         if (GameObject.Find("Window").GetComponent<gameState>().gamePlay == true &&
             GameObject.Find("StartButton").GetComponent<Transform>().position.y < -6.9) {
             GetComponent<TargetJoint2D>().maxForce = 200f;
@@ -48,6 +54,11 @@ public class creditButton : MonoBehaviour {
         if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             GameObject.Find("Window").GetComponent<SpriteRenderer>().sprite = 
                 GameObject.Find("Window").GetComponent<gameState>().credit_window;
+            GameObject.Find("Window").GetComponent<Transform>().position = new Vector3(GameObject.Find("Window").GetComponent<Transform>().position.x,
+                                                                                       0f,
+                                                                                       GameObject.Find("Window").GetComponent<Transform>().position.z);
+            GameObject.Find("ScrollButtonNext").GetComponent<TargetJoint2D>().target = new Vector2(11f, -4.2f);
+            GameObject.Find("ScrollButtonBack").GetComponent<TargetJoint2D>().target = new Vector2(-11f, -4.2f);
         }
     }
 

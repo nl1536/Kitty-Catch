@@ -3,8 +3,13 @@ using System.Collections;
 
 public class startButton : MonoBehaviour {
 
+    public Sprite no_button;
+    public Sprite play_button;
+
 	// Use this for initialization
 	void Start () {
+
+        GetComponent<SpriteRenderer>().sprite = play_button;
 	
 	}
 
@@ -43,7 +48,20 @@ public class startButton : MonoBehaviour {
     }
 
     void OnMouseDown() {
-        GameObject.Find("Window").GetComponent<gameState>().gamePlay = true;
+        if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
+            GameObject.Find("Window").GetComponent<Transform>().position = new Vector3(GameObject.Find("Window").GetComponent<Transform>().position.x,
+                                                                                       0f,
+                                                                                       GameObject.Find("Window").GetComponent<Transform>().position.z);
+            GameObject.Find("Window").GetComponent<gameState>().gameTutorial = true;
+            GameObject.Find("Window").GetComponent<SpriteRenderer>().sprite =
+                GameObject.Find("Window").GetComponent<gameState>().tutorial_window;
+            GetComponent<SpriteRenderer>().sprite = no_button;
+        }
+        else if (GameObject.Find("Window").GetComponent<gameState>().gameTutorial == true) {
+            GameObject.Find("ScrollButtonNext").GetComponent<TargetJoint2D>().target = new Vector2(11f, -4.2f);
+            GameObject.Find("ScrollButtonBack").GetComponent<TargetJoint2D>().target = new Vector2(-11f, -4.2f);
+            GameObject.Find("Window").GetComponent<gameState>().gamePlay = true;
+        }
     }
 
     void OnMouseEnter() {

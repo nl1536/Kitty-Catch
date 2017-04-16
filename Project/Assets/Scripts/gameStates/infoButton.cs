@@ -3,6 +3,8 @@ using System.Collections;
 
 public class infoButton : MonoBehaviour {
 
+    public Sprite yes_button;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -28,6 +30,10 @@ public class infoButton : MonoBehaviour {
             GetComponent<TargetJoint2D>().target = new Vector2(-1.56f, -6.3f);
         }
 
+        if (GameObject.Find("Window").GetComponent<gameState>().gameTutorial == true) {
+            GetComponent<SpriteRenderer>().sprite = yes_button;
+        }
+
         if (GameObject.Find("Window").GetComponent<gameState>().gamePlay == true &&
             GameObject.Find("CreditButton").GetComponent<Transform>().position.y < -6.9) {
             GetComponent<TargetJoint2D>().maxForce = 200f;
@@ -46,7 +52,29 @@ public class infoButton : MonoBehaviour {
     void OnMouseDown() {
         if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             GameObject.Find("Window").GetComponent<SpriteRenderer>().sprite =
-                GameObject.Find("Window").GetComponent<gameState>().info_window_controls;
+                GameObject.Find("Window").GetComponent<gameState>().info_window_story;
+            GameObject.Find("Window").GetComponent<Transform>().position = new Vector3(GameObject.Find("Window").GetComponent<Transform>().position.x,
+                                                                                       0f,
+                                                                                       GameObject.Find("Window").GetComponent<Transform>().position.z);
+            GameObject.Find("ScrollButtonNext").GetComponent<TargetJoint2D>().target = new Vector2(8f, -4.2f);
+            GameObject.Find("ScrollButtonBack").GetComponent<TargetJoint2D>().target = new Vector2(-8f, -4.2f);
+        }
+
+        if (GameObject.Find("Window").GetComponent<gameState>().gameTutorial == true) {
+            GameObject.Find("Window").GetComponent<SpriteRenderer>().sprite =
+                GameObject.Find("Window").GetComponent<gameState>().info_window_story;
+            GameObject.Find("Window").GetComponent<Transform>().position = new Vector3(GameObject.Find("Window").GetComponent<Transform>().position.x,
+                                                                                       0f,
+                                                                                       GameObject.Find("Window").GetComponent<Transform>().position.z);
+            GameObject.Find("ScrollButtonNext").GetComponent<TargetJoint2D>().target = new Vector2(8f, -4.2f);
+            GameObject.Find("ScrollButtonBack").GetComponent<TargetJoint2D>().target = new Vector2(-8f, -4.2f);
+
+            GameObject.Find("StartButton").GetComponent<SpriteRenderer>().sprite =
+                GameObject.Find("StartButton").GetComponent<startButton>().play_button;
+
+            GetComponent<TargetJoint2D>().maxForce = 200f;
+            GetComponent<TargetJoint2D>().anchor = new Vector2(0f, 0f);
+            GetComponent<TargetJoint2D>().target = new Vector2(-1.56f, -10f);
         }
     }
 

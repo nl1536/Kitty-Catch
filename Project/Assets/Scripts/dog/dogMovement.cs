@@ -30,6 +30,7 @@ public class dogMovement : MonoBehaviour {
         Physics2D.IgnoreLayerCollision(8, 12); // "RunningMan"
         Physics2D.IgnoreLayerCollision(8, 17); // "centerBuilding"
         Physics2D.IgnoreLayerCollision(8, 18); // "helicopter"
+        Physics2D.IgnoreLayerCollision(8, 19); // "Frame"
 
         if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             GetComponent<Renderer>().enabled = false;
