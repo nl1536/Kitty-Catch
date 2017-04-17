@@ -3,6 +3,9 @@ using System.Collections;
 
 public class creditButton : MonoBehaviour {
 
+    public AudioClip button_hover_sfx;
+    public AudioClip button_click_sfx;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -25,7 +28,7 @@ public class creditButton : MonoBehaviour {
         if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             GetComponent<TargetJoint2D>().maxForce = 800f;
             GetComponent<TargetJoint2D>().anchor = new Vector2(0f, 0f);
-            GetComponent<TargetJoint2D>().target = new Vector2(2.65f, -6.3f);
+            GetComponent<TargetJoint2D>().target = new Vector2(2.65f, -6.28f);
         }
 
         if (GameObject.Find("Window").GetComponent<gameState>().gameTutorial == true) {
@@ -51,6 +54,8 @@ public class creditButton : MonoBehaviour {
     }
 
     void OnMouseDown() {
+        GetComponent<AudioSource>().PlayOneShot(button_click_sfx);
+
         if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             GameObject.Find("Window").GetComponent<SpriteRenderer>().sprite = 
                 GameObject.Find("Window").GetComponent<gameState>().credit_window;
@@ -63,6 +68,7 @@ public class creditButton : MonoBehaviour {
     }
 
     void OnMouseEnter() {
+        GetComponent<AudioSource>().PlayOneShot(button_hover_sfx);
         if (GetComponent<Transform>().position.y <= -5.9f) {
             GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x,
                                                          GetComponent<Transform>().position.y + 0.5f,

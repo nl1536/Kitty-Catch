@@ -6,6 +6,9 @@ public class startButton : MonoBehaviour {
     public Sprite no_button;
     public Sprite play_button;
 
+    public AudioClip button_hover_sfx;
+    public AudioClip button_click_sfx;
+
 	// Use this for initialization
 	void Start () {
 
@@ -30,13 +33,19 @@ public class startButton : MonoBehaviour {
         if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             GetComponent<TargetJoint2D>().maxForce = 800f;
             GetComponent<TargetJoint2D>().anchor = new Vector2(0f, 0f);
-            GetComponent<TargetJoint2D>().target = new Vector2(6.94f, -6.3f);
+            GetComponent<TargetJoint2D>().target = new Vector2(6.82f, -6.28f);
+        }
+
+        if (GameObject.Find("Window").GetComponent<gameState>().gameTutorial == true) {
+            GetComponent<TargetJoint2D>().maxForce = 800f;
+            GetComponent<TargetJoint2D>().anchor = new Vector2(0f, 0f);
+            GetComponent<TargetJoint2D>().target = new Vector2(6.82f, -6.28f);
         }
 
         if (GameObject.Find("Window").GetComponent<gameState>().gamePlay == true) {
             GetComponent<TargetJoint2D>().maxForce = 200f;
             GetComponent<TargetJoint2D>().anchor = new Vector2(0f, 0f);
-            GetComponent<TargetJoint2D>().target = new Vector2(6.94f, -10f);
+            GetComponent<TargetJoint2D>().target = new Vector2(6.82f, -10f);
         }
 
         //if (GameObject.Find("Window").GetComponent<gameState>().gameWin == true) {
@@ -48,6 +57,8 @@ public class startButton : MonoBehaviour {
     }
 
     void OnMouseDown() {
+        GetComponent<AudioSource>().PlayOneShot(button_click_sfx);
+
         if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             GameObject.Find("Window").GetComponent<Transform>().position = new Vector3(GameObject.Find("Window").GetComponent<Transform>().position.x,
                                                                                        0f,
@@ -65,6 +76,7 @@ public class startButton : MonoBehaviour {
     }
 
     void OnMouseEnter() {
+        GetComponent<AudioSource>().PlayOneShot(button_hover_sfx);
         if (GetComponent<Transform>().position.y <= -5.9f) {
             GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x,
                                                          GetComponent<Transform>().position.y + 0.5f,

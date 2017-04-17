@@ -4,6 +4,8 @@ using System.Collections;
 public class infoButton : MonoBehaviour {
 
     public Sprite yes_button;
+    public AudioClip button_hover_sfx;
+    public AudioClip button_click_sfx;
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +29,7 @@ public class infoButton : MonoBehaviour {
         if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             GetComponent<TargetJoint2D>().maxForce = 800f;
             GetComponent<TargetJoint2D>().anchor = new Vector2(0f, 0f);
-            GetComponent<TargetJoint2D>().target = new Vector2(-1.56f, -6.3f);
+            GetComponent<TargetJoint2D>().target = new Vector2(-1.58f, -6.28f);
         }
 
         if (GameObject.Find("Window").GetComponent<gameState>().gameTutorial == true) {
@@ -38,7 +40,7 @@ public class infoButton : MonoBehaviour {
             GameObject.Find("CreditButton").GetComponent<Transform>().position.y < -6.9) {
             GetComponent<TargetJoint2D>().maxForce = 200f;
             GetComponent<TargetJoint2D>().anchor = new Vector2(0f, 0f);
-            GetComponent<TargetJoint2D>().target = new Vector2(-1.56f, -10f);
+            GetComponent<TargetJoint2D>().target = new Vector2(-1.58f, -10f);
         }
 
         //if (GameObject.Find("Window").GetComponent<gameState>().gameWin == true) {
@@ -50,6 +52,8 @@ public class infoButton : MonoBehaviour {
     }
 
     void OnMouseDown() {
+        GetComponent<AudioSource>().PlayOneShot(button_click_sfx);
+
         if (GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             GameObject.Find("Window").GetComponent<SpriteRenderer>().sprite =
                 GameObject.Find("Window").GetComponent<gameState>().info_window_story;
@@ -79,6 +83,7 @@ public class infoButton : MonoBehaviour {
     }
 
     void OnMouseEnter() {
+        GetComponent<AudioSource>().PlayOneShot(button_hover_sfx);
         if (GetComponent<Transform>().position.y <= -5.9f) {
             GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x,
                                                          GetComponent<Transform>().position.y + 0.5f,
