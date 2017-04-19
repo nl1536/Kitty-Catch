@@ -22,6 +22,9 @@ public class ManCatchCat : MonoBehaviour {
             GameObject.Find("Window").GetComponent<gameState>().gamePlay = false;
             GameObject.Find("Window").GetComponent<gameState>().gameWin = true;
         }
+        else {
+            GameObject.Find("Window").GetComponent<gameState>().gameWin = false;
+        }
 
 	}
 

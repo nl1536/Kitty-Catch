@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class startButton : MonoBehaviour {
 
     public Sprite no_button;
     public Sprite play_button;
+    public Sprite play_again_button;
 
     public AudioClip button_hover_sfx;
     public AudioClip button_click_sfx;
@@ -48,12 +50,12 @@ public class startButton : MonoBehaviour {
             GetComponent<TargetJoint2D>().target = new Vector2(6.82f, -10f);
         }
 
-        //if (GameObject.Find("Window").GetComponent<gameState>().gameWin == true) {
-        //    GetComponent<TargetJoint2D>().maxForce = 800f;
-        //    GetComponent<TargetJoint2D>().anchor = new Vector2(GetComponent<Transform>().position.x - 8.0f,
-        //                                                       GetComponent<Transform>().position.y + 4.0f);
-        //    GetComponent<TargetJoint2D>().target = new Vector2(8f, -4.0f);
-        //}
+        if (GameObject.Find("Window").GetComponent<gameState>().gameWin == true) {
+            GetComponent<TargetJoint2D>().maxForce = 800f;
+            GetComponent<TargetJoint2D>().anchor = new Vector2(0f, 0f);
+            GetComponent<TargetJoint2D>().target = new Vector2(6.82f, -6.28f);
+            GetComponent<SpriteRenderer>().sprite = play_again_button;
+        }
     }
 
     void OnMouseDown() {
@@ -72,6 +74,9 @@ public class startButton : MonoBehaviour {
             GameObject.Find("ScrollButtonNext").GetComponent<TargetJoint2D>().target = new Vector2(11f, -4.2f);
             GameObject.Find("ScrollButtonBack").GetComponent<TargetJoint2D>().target = new Vector2(-11f, -4.2f);
             GameObject.Find("Window").GetComponent<gameState>().gamePlay = true;
+        }
+        else if (GameObject.Find("Window").GetComponent<gameState>().gameWin == true) {
+            SceneManager.LoadScene("Gameplay");
         }
     }
 

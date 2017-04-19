@@ -98,7 +98,7 @@ public class helicopterMovement : MonoBehaviour {
         }
 
         if (GameObject.Find("Window").GetComponent<gameState>().gameWin == true) {
-            GetComponent<Transform>().position = new Vector3(-14.02f, 0f, GetComponent<Transform>().position.z);
+            GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX;
             GetComponent<Renderer>().enabled = false;
             GetComponent<AudioSource>().mute = true;
         }

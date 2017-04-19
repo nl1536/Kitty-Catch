@@ -1477,7 +1477,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 16
   m_Sprite: {fileID: 21300000, guid: 35467dd451a1bd14085ff2caf2e5416f, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -1643,7 +1643,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 16
   m_Sprite: {fileID: 21300000, guid: 35467dd451a1bd14085ff2caf2e5416f, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -1996,7 +1996,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 16
   m_Sprite: {fileID: 21300000, guid: 35467dd451a1bd14085ff2caf2e5416f, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -2059,7 +2059,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 16
   m_Sprite: {fileID: 21300000, guid: 35467dd451a1bd14085ff2caf2e5416f, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -2204,12 +2204,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4000013642383054, guid: fd93ea601618d4849b7fed306ccaa7b4, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.1858045
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114000011931056210, guid: fd93ea601618d4849b7fed306ccaa7b4, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd93ea601618d4849b7fed306ccaa7b4, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1761700848
@@ -2430,6 +2425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   no_button: {fileID: 21300000, guid: 05c54c81c4dfce14d8b0728efbebc83e, type: 3}
   play_button: {fileID: 21300000, guid: 8d727f4c4c80742488108380d3ed7d00, type: 3}
+  play_again_button: {fileID: 21300000, guid: d8999725bea5b4b48aa9b85789065ad5, type: 3}
   button_hover_sfx: {fileID: 8300000, guid: ad56bdc80bfdb734a8ebc8d1c1ef4045, type: 3}
   button_click_sfx: {fileID: 8300000, guid: 7003ec7eb43b2d245a16cafbb7009cd8, type: 3}
 --- !u!82 &1867247563

@@ -24,6 +24,7 @@ public class ignoreCollider : MonoBehaviour {
         }
 
         if (GameObject.Find("Window").GetComponent<gameState>().gameWin == true ||
+            GameObject.Find("Window").GetComponent<gameState>().gameTutorial == true ||
             GameObject.Find("Window").GetComponent<gameState>().gameStart == true) {
             gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         }
