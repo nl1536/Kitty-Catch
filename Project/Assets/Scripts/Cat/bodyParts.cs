@@ -3,9 +3,12 @@ using System.Collections;
 
 public class bodyParts : MonoBehaviour {
 
+    float rotateSpeed;
+
 	// Use this for initialization
 	void Start () {
 
+        rotateSpeed = Random.Range(10f, 20f);
         GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
     }
 	
@@ -24,7 +27,31 @@ public class bodyParts : MonoBehaviour {
         Physics2D.IgnoreLayerCollision(10, 18);
         Physics2D.IgnoreLayerCollision(10, 19);
 
-        // GetComponent<Rigidbody2D>().AddForce(new Vector3(Random.Range(.01f, .05f), 0f, Random.Range(0.01f, .05f)), ForceMode2D.Impulse);
+        if (GetComponent<Transform>().position.x <= GameObject.Find("Helicopter").GetComponent<Transform>().position.x) {
+            GetComponent<Rigidbody2D>().MoveRotation(GetComponent<Rigidbody2D>().rotation - rotateSpeed);
+        }
 
+        if (GetComponent<Transform>().position.x > GameObject.Find("Helicopter").GetComponent<Transform>().position.x) {
+            GetComponent<Rigidbody2D>().MoveRotation(GetComponent<Rigidbody2D>().rotation + rotateSpeed);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D noRotate) {
+        if (noRotate.gameObject.name == "Ground") {
+            if (rotateSpeed > 0f) {
+                rotateSpeed = rotateSpeed - 3f;
+            }
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D noRotate) {
+        if (noRotate.gameObject.name == "Ground") {
+            if (rotateSpeed > 0f) {
+                rotateSpeed = rotateSpeed - 3f;
+            }
+            if (rotateSpeed <= 0f) {
+                rotateSpeed = 0f;
+            }
+        }
     }
 }

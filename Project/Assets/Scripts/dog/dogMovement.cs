@@ -79,37 +79,41 @@ public class dogMovement : MonoBehaviour {
                     GetComponent<SpriteRenderer>().flipX = false;
                 }
                 // the more CATS caught, the higher the DOG jumps
-                if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 6 &&
-                    GetComponent<Transform>().position.y + 3f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
-                    GetComponent<Transform>().position.y <= -3f) {
-                    GetComponent<Animator>().SetBool("Jump", true);
+                if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 6) {
                     jumpForce = .3f;
                     runDistance = 5f;
-                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    if (GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y <= 3f &&
+                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= -2f) {
+                        GetComponent<Animator>().SetBool("Jump", true);
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    }
                 }
-                if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 7 &&
-                    GetComponent<Transform>().position.y + 3.5f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
-                    GetComponent<Transform>().position.y <= -3f) {
-                    GetComponent<Animator>().SetBool("Jump", true);
-                    jumpForce = .35f;
+                if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 7) {
+                    jumpForce = .3f;
                     runDistance = 4f;
-                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    if (GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y <= 4f &&
+                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= -1f) {
+                        GetComponent<Animator>().SetBool("Jump", true);
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    }
                 }
-                if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 8 &&
-                    GetComponent<Transform>().position.y + 4f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
-                    GetComponent<Transform>().position.y <= -3f) {
-                    GetComponent<Animator>().SetBool("Jump", true);
-                    jumpForce = .4f;
+                if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 8) {
+                    jumpForce = .3f;
                     runDistance = 3f;
-                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    if (GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y <= 4f &&
+                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= -1f) {
+                        GetComponent<Animator>().SetBool("Jump", true);
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    }
                 }
-                if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 9 &&
-                    GetComponent<Transform>().position.y + 4.5f >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y &&
-                    GetComponent<Transform>().position.y <= -3f) {
-                    GetComponent<Animator>().SetBool("Jump", true);
-                    jumpForce = .45f;
+                if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 9) {
+                    jumpForce = .3f;
                     runDistance = 2f;
-                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    if (GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y <= 4f &&
+                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= -1f) {
+                        GetComponent<Animator>().SetBool("Jump", true);
+                        GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+                    }
                 }
             }
         }
