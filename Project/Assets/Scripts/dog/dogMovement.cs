@@ -78,39 +78,39 @@ public class dogMovement : MonoBehaviour {
                                                                      GetComponent<Transform>().position.z);
                     GetComponent<SpriteRenderer>().flipX = false;
                 }
-                // the more CATS caught, the higher the DOG jumps
+                // the more CATS caught, the more the DOG follows the CAT
                 if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 6) {
-                    jumpForce = .3f;
+                    jumpForce = 1.5f;
                     runDistance = 5f;
-                    if (GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y <= 3f &&
-                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= -2f) {
+                    if (GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y <= 4f &&
+                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= 3.5f) {
                         GetComponent<Animator>().SetBool("Jump", true);
                         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                     }
                 }
                 if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 7) {
-                    jumpForce = .3f;
+                    jumpForce = 1.5f;
                     runDistance = 4f;
                     if (GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y <= 4f &&
-                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= -1f) {
+                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= 3.5f) {
                         GetComponent<Animator>().SetBool("Jump", true);
                         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                     }
                 }
                 if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 8) {
-                    jumpForce = .3f;
+                    jumpForce = 1.5f;
                     runDistance = 3f;
                     if (GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y <= 4f &&
-                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= -1f) {
+                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= 3.5f) {
                         GetComponent<Animator>().SetBool("Jump", true);
                         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                     }
                 }
                 if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught == 9) {
-                    jumpForce = .3f;
+                    jumpForce = 1.5f;
                     runDistance = 2f;
                     if (GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y <= 4f &&
-                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= -1f) {
+                        GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.y >= 3.5f) {
                         GetComponent<Animator>().SetBool("Jump", true);
                         GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
                     }
