@@ -45,7 +45,12 @@ public class catDie : MonoBehaviour {
                 GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<CatMovement>().catDed = true;
                 Instantiate(GetComponent<CatMovement>().Cat, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
-                GameObject.Find("Man").GetComponent<Animator>().SetTrigger("Catch");
+                if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught < 10) {
+                    GameObject.Find("Man").GetComponent<Animator>().SetTrigger("Catch");
+                }
+                if (GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught >= 10) {
+                    GameObject.Find("Man").GetComponent<Animator>().SetTrigger("finalCatch");
+                }
             }
             // if CAT hits HELICOPTER then it dies and NEW CAT appears
             if (catCollide.gameObject.tag == "chopper") {
