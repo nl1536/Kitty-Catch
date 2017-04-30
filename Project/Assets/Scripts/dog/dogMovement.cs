@@ -4,8 +4,8 @@ using System.Collections;
 public class dogMovement : MonoBehaviour {
 
     public bool moveLeftRight;
-    bool moveLeft;
-    bool moveRight;
+    public bool moveLeft;
+    public bool moveRight;
 
     float jumpForce;
     public float runDistance;
@@ -17,6 +17,8 @@ public class dogMovement : MonoBehaviour {
 	void Start () {
 
         GetComponent<Animator>().SetBool("hasKilled", false);
+        GetComponent<Animator>().SetBool("moveLeft", true);
+        GetComponent<Animator>().SetBool("moveRight", false);
         moveLeftRight = true;
         runDistance = 5f;
         GetComponent<AudioSource>().mute = false;
@@ -42,12 +44,9 @@ public class dogMovement : MonoBehaviour {
                 GameObject.Find("Man").GetComponent<ManCatchCat>().catsCaught >= 6) { // when MAN catches 6 CATS, DOG is activated
                 GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
 
-                if (GetComponent<Transform>().position.y <= -5.9) {
-                    GetComponent<Animator>().SetBool("Jump", false);
-                }
-
                 // if DOG is certain distance to left of CAT, will move RIGHT
-                if (GetComponent<Transform>().position.x <= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.x - runDistance) {
+                if (GetComponent<Animator>().GetBool("Jump") == false &&
+                    GetComponent<Transform>().position.x <= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.x - runDistance) {
                     moveLeft = false;
                     moveRight = true;
                     if (GetComponent<Transform>().position.x >= 0) {
@@ -55,7 +54,8 @@ public class dogMovement : MonoBehaviour {
                     }
                 }
                 // if DOG is certain distance to right of CAT, will more LEFT
-                if (GetComponent<Transform>().position.x >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.x + runDistance) {
+                if (GetComponent<Animator>().GetBool("Jump") == false &&
+                    GetComponent<Transform>().position.x >= GameObject.FindWithTag("totsNotDedCat").GetComponent<Transform>().position.x + runDistance) {
                     moveRight = false;
                     moveLeft = true;
                     if (GetComponent<Transform>().position.x >= 0) {
@@ -68,6 +68,8 @@ public class dogMovement : MonoBehaviour {
                     GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x + .1f,
                                                                      GetComponent<Transform>().position.y,
                                                                      GetComponent<Transform>().position.z);
+                    GetComponent<Animator>().SetBool("moveLeft", false);
+                    GetComponent<Animator>().SetBool("moveRight", true);
                     GetComponent<SpriteRenderer>().flipX = true;
                 }
                 // DOG moves left
@@ -76,6 +78,8 @@ public class dogMovement : MonoBehaviour {
                     GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x - .1f,
                                                                      GetComponent<Transform>().position.y,
                                                                      GetComponent<Transform>().position.z);
+                    GetComponent<Animator>().SetBool("moveLeft", true);
+                    GetComponent<Animator>().SetBool("moveRight", false);
                     GetComponent<SpriteRenderer>().flipX = false;
                 }
                 // the more CATS caught, the more the DOG follows the CAT
@@ -125,8 +129,21 @@ public class dogMovement : MonoBehaviour {
         }
     }
 
+    void OnTriggerEnter2D(Collider2D jump) {
+        if (jump.gameObject.name == "Ground") {
+            GetComponent<Animator>().SetBool("Jump", false);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D jump) {
+        if (jump.gameObject.name == "Ground") {
+            GetComponent<Animator>().SetBool("Jump", false);
+        }
+    }
+
     void OnTriggerExit2D(Collider2D jump) {
         if (jump.gameObject.name == "Ground") {
+            GetComponent<Animator>().SetBool("Jump", true);
             GetComponent<AudioSource>().PlayOneShot(dog_bark_sfx);
         }
     }

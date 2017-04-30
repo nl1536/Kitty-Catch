@@ -71,7 +71,12 @@ public class catDie : MonoBehaviour {
                 GetComponent<CatMovement>().catDed = true;
                 killedByDog = true;
                 Instantiate(GetComponent<CatMovement>().Cat, new Vector3(0f, 5.2f, 0f), Quaternion.identity);
-                GameObject.Find("Dog").GetComponent<Animator>().SetTrigger("Kill");
+                if (GameObject.Find("Dog").GetComponent<dogMovement>().moveLeft == true) {
+                    GameObject.Find("Dog").GetComponent<Animator>().SetTrigger("KillLeft");
+                }
+                else if (GameObject.Find("Dog").GetComponent<dogMovement>().moveRight == true) {
+                    GameObject.Find("Dog").GetComponent<Animator>().SetTrigger("KillRight");
+                }
                 GameObject.Find("Dog").GetComponent<Animator>().SetBool("hasKilled", true);
             }
         }

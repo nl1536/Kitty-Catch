@@ -784,9 +784,9 @@ BoxCollider2D:
   m_Material: {fileID: 6200000, guid: b47876a0ff6405d459bbd9a99016ed17, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0.01776388, y: -0.23479076}
+  m_Offset: {x: 0.207123, y: -0.23479076}
   serializedVersion: 2
-  m_Size: {x: 8.029822, y: 0.3100808}
+  m_Size: {x: 40.22882, y: 0.3100808}
 --- !u!212 &883690827
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -846,9 +846,9 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: -3.5147777, y: -0.0142464135}
+  - {x: -19.8754, y: -0.0142464135}
   - {x: -0.3781968, y: -0.01262422}
-  - {x: 3.9994745, y: -0.028493416}
+  - {x: 20.360098, y: -0.028493416}
 --- !u!1001 &959420883
 Prefab:
   m_ObjectHideFlags: 0
@@ -1158,7 +1158,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1087608560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.7, y: 6.7, z: 0}
+  m_LocalPosition: {x: 0, y: 7.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1177,7 +1177,7 @@ TargetJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_Anchor: {x: 0, y: 0}
-  m_Target: {x: -7.7, y: 6.7}
+  m_Target: {x: 0, y: 7.2}
   m_AutoConfigureTarget: 0
   m_MaxForce: 10000
   m_DampingRatio: 1
@@ -1728,7 +1728,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: ef056bfcd0ae42a4490244674c467f98, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1758,6 +1758,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveLeftRight: 0
+  moveLeft: 0
+  moveRight: 0
   runDistance: 0
   dog_bark_sfx: {fileID: 8300000, guid: 63dfda5b22c31874ba1139601695bc00, type: 3}
   dog_growl_sfx: {fileID: 8300000, guid: 2d95f2f5a5ef95d4e9ac35fab0f10cac, type: 3}
@@ -1789,9 +1791,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: -0.034461617}
+  m_Offset: {x: 0.023881404, y: -0.010579965}
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.694768}
+  m_Size: {x: 0.88855296, y: 0.5355574}
 --- !u!95 &1313786226
 Animator:
   serializedVersion: 3
@@ -2565,7 +2567,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1870461825}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -2601,7 +2603,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 7f866c6e6fda3f745b386b0f92b119bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
