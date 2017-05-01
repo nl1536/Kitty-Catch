@@ -2985,7 +2985,7 @@ MonoBehaviour:
   info_window_controls: {fileID: 21300000, guid: 8f5b5ba88a58332438c799f97eb4fa10,
     type: 3}
   info_window_goal: {fileID: 21300000, guid: 27f9b03807834e54e8ce15df9f65c12c, type: 3}
-  win_window: {fileID: 21300000, guid: 3fca37464d8831749b2d96da4f12efa1, type: 3}
+  win_window: {fileID: 21300000, guid: 01c6b5f69f67dc542aba0fa7c8fb8c1f, type: 3}
   tutorial_window: {fileID: 21300000, guid: 264f6cebb4027c244bf88361477c78d9, type: 3}
 --- !u!257 &2044999221
 TargetJoint2D:
