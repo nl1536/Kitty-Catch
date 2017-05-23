@@ -198,8 +198,6 @@ MonoBehaviour:
   moveRight: 0
   moveJump: 0
   moveJumping: 0
-  moveJumpingRight: 0
-  moveJumpingLeft: 0
   bounceLeft: 0
   bounceRight: 0
   moveSpeedRight: 0
@@ -256,7 +254,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: -271581550
+  randomSeed: 1925013310
   InitialModule:
     serializedVersion: 2
     enabled: 1
